@@ -1,24 +1,29 @@
 name: Schedule Tweet
 on:
   schedule:
-    - cron: '27 18 * * *'
+    - cron: '30 18 * * *'
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout repo content
-      uses: actions/checkout@v2 # 
-      with :
-          python-version: '3.10.2'
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
     - name: Install dependencies
       run: |
         pip install tweepy
     - name: run the bot
       run: |
-        python main.py
+        python tweet.py
       env:
-        TWITTER_API_KEY : ${{ secrets.API_KEY }}
-        TWITTER_API_SECRET_KEY : ${{ secrets.API_SECRET_KEY }}
-        TWITTER_ACCESS_TOKEN : ${{ secrets.ACCESS_TOKEN }}
-        TWITTER_ACCESS_TOKEN_SECRET : ${{ secrets.ACCESS_TOKEN_SECRET }}
+        BEARER_TOKEN : ${{ secrets.BEARER_TOKEN }}
+        API_KEY : ${{ secrets.API_KEY }}
+        API_KEY_SECRET : ${{ secrets.API_KEY_SECRET }}
+        ACCESS_TOKEN : ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN_SECRET : ${{ secrets.ACCESS_TOKEN_SECRET }}
