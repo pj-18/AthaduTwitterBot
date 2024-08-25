@@ -1,6 +1,7 @@
 import tweepy
 import os
 from datetime import date
+from datetime import timedelta
 
 bearer_token = os.getenv('BEARER_TOKEN')
 api_key = os.getenv('API_KEY')
