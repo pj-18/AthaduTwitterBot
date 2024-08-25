@@ -38,4 +38,4 @@ jobs:
         ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
         RELEASE_DATE: '2025-08-09'
       run: |
-        python main.py
+        python tweet.py
