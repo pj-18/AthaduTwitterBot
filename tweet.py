@@ -17,11 +17,12 @@ client = tweepy.Client( bearer_token = bearer_token,
 # Function to send the tweet
 def tweet_countdown():
     today = date.today()
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     release_date = date(2025, 8, 9)
     # Only tweet if today is before the release date
     if today <= release_date:
         days_left = (release_date - today).days
-        tweet = "JAI BABU"
+        tweet = f"JAI BABU {timestamp}"
         #tweet = f"{days_left} days left until the release!"
         client.create_tweet(text=tweet)
         print("Tweeted:", tweet)
