@@ -1,7 +1,6 @@
 import tweepy
 import os
 from datetime import date
-from datetime import datetime
 
 bearer_token = os.getenv('BEARER_TOKEN')
 api_key = os.getenv('API_KEY')
@@ -18,19 +17,16 @@ client = tweepy.Client( bearer_token = bearer_token,
 # Function to send the tweet
 def tweet_countdown():
     today = date.today()
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    release_date = date(2025, 8, 9)
+    releaseDate = date(2025, 8, 9)
     # Only tweet if today is before the release date
     if today <= release_date:
-        days_left = (release_date - today).days
-        tweet = f"JAI BABU {timestamp}"
-        #tweet = f"{days_left} days left until the release!"
+        daysLeft = (releaseDate - today).days
+        tweet = f"{daysLeft}"
         client.create_tweet(text=tweet)
         print("Tweeted:", tweet)
     else:
         print("No more tweets. The release date has passed.")
 
-# Call the function
 tweet_countdown()
 
 # Path to the image on your device
