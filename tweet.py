@@ -14,12 +14,11 @@ client = tweepy.Client( bearer_token = bearer_token,
                     access_token = access_token,
                     access_token_secret = access_token_secret)
 
-# Function to send the tweet
 def tweet_countdown():
     today = date.today()
     releaseDate = date(2025, 8, 9)
     # Only tweet if today is before the release date
-    if today <= release_date:
+    if today <= releaseDate:
         daysLeft = (releaseDate - today).days
         tweet = f"{daysLeft}"
         client.create_tweet(text=tweet)
@@ -29,8 +28,5 @@ def tweet_countdown():
 
 tweet_countdown()
 
-# Path to the image on your device
 #image_path = 'path_to_your_image.jpg'
-
-# Post the tweet with the image
-#pi.update_status_with_media(status=tweet, filename=image_path)
+#client.create_tweet(text=tweet, media_ids=[client.media_upload(image_path).media_id])
