@@ -19,7 +19,7 @@ def tweet_countdown():
     releaseDate = date(2025, 8, 9)
     # Only tweet if today is before the release date
     if today <= releaseDate:
-        daysLeft = (releaseDate - today).days
+        daysLeft = (releaseDate - today).days - 1
         tweet = f"{daysLeft}"
         client.create_tweet(text=tweet)
         print("Tweeted:", tweet)
